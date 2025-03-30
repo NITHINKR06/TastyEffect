@@ -1,0 +1,51 @@
+.shop{
+    flex-direction: row;
+    padding: 50px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: auto;
+    height: 100vh;
+    background: linear-gradient(90deg, #f0dde2 0%, #ced3ea 100%);
+    margin: 0px 0px 0px 0px ;
+
+}
+
+.buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: left;
+    height: 60vh;
+    width: 200vh;
+    margin-top: 50px;
+    margin-left: 410px;
+    gap: 15px;
+    background: linear-gradient(90deg, #fca7b8 0%, #a2c3fe 100%);
+    border-radius: 30px;
+}
+
+.buttons h1{
+    margin-left: -180px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    font-family: "Anta", sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+}
+
+.buttons Button {
+    margin-bottom: 10px;
+    margin-left: 120px;
+
+}
+
+.header{
+    font-family: "Anta", sans-serif;
+    font-size: 40px;
+}
+
+.image{
+    margin-left: -250px;
+    margin-top: 130px;
+}

@@ -1,0 +1,76 @@
+.Maindiv{
+    width: 100vh; /* Set your desired width */
+    height: 70vh; /* Set your desired height */
+    overflow: auto;
+    padding-top: 30px; /* Add scrolling functionality */
+    /* border: 1px solid #ccc; Optional: Add border for visualization */
+  }
+
+.rName{
+    font-family: "Anta", sans-serif;
+    font-size: 35px;
+    font-weight: 600;
+    margin-top: -20px;
+    margin-bottom: 10px;
+}
+
+.rRating{
+    font-family: "Anta", sans-serif;
+
+}
+
+.rIngrident{
+    font-family: "Anta", sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    
+}
+
+.rIngridents{
+    font-family: "Anta", sans-serif;
+    font-size: 19px;
+    /* list-style-type: decimal; */
+    margin-right: 25px;
+    font-weight: 500;    
+    margin-left: 30px;
+    
+}
+
+/* Add this CSS to your loaded.css file */
+.crossed {
+    text-decoration: line-through;
+  }
+  
+
+
+.rSteps{
+    font-family: "Anta", sans-serif;
+    font-weight: 600;
+    font-size: 20px;
+    margin-top: 10px;
+    
+}
+.rStep{
+    font-family: "Anta", sans-serif;
+    /* list-style-type: decimal; */
+    font-weight: 500;
+    font-size: 18px;
+    margin-right: 25px;
+    margin-left: 30px;
+}
+
+.rDis{
+    font-family: "Anta", sans-serif;
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+
+.rTime{
+    font-family: "Anta", sans-serif;
+    font-size: 18px;
+
+}
+
+.img{
+    border-radius: 10px;
+}

@@ -1,0 +1,24 @@
+.SearchBox{
+    background-color: rgb(240, 248, 255);
+}
+
+.searchbox{
+    background-color: rgba(255, 255, 255, 0);
+}
+
+.colorSearchBox{
+    background-color: rgba(255, 255, 255, 0);
+}
+
+.length {
+    /* color: rgb(255, 255, 255); */
+    /* background-color: #4158D0; */
+    background: linear-gradient(90deg, #f0dde2 0%, #ced3ea 100%);
+
+    font-size: calc(1.2rem + 1vw);
+    font-weight: 800;
+    /* background: linear-gradient(to right, #803bbec 30%, #1b2b1b 100%); */
+    -webkit-text-fill-color: transparent;
+    /* padding-top: 50px; */
+    /* margin-bottom: -90px; */
+}

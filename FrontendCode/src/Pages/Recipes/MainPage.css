@@ -1,0 +1,87 @@
+/* MainPage.css */
+.maindiv{
+  background: linear-gradient(90deg, #f0dde2 0%, #ced3ea 100%);
+  margin-top: 5px;
+}
+
+.main-page-container {
+    padding-top: 24px;
+  }
+
+  .bgimagediv{
+    backdrop-filter: blur(10px); /* Adjust the blur radius as needed */
+    background-color: rgba(255, 255, 255, 0.379); /* Adjust the background color and opacity as needed */
+  }
+  
+  .main-text {
+    color: #630000; 
+    font-size: 45px; 
+    font-family: Papyrus;
+    font-weight: 900;
+    margin-top: -28px;
+    padding-top: 50px;
+  }
+  
+  .recipeDiv{
+    margin-top: -27px;
+    background-image: url(https://source.unsplash.com/random?app);
+  background-size: cover;
+  position: relative;
+  overflow: hidden;
+  background-repeat: no-repeat;
+  background-position: center;
+    
+  }
+
+
+  
+  .subtext {
+    font-weight: 600;
+    font-size: 20px;
+    font-family: 'Times New Roman', Times, serif;
+
+    padding: 10px; /* Add padding to make the blur effect more visible */
+}
+
+
+  .searchbox{
+    margin-top: -30px;
+    margin-left: 400px;
+    background-color: rgba(255, 255, 255, 0);
+    
+  }
+
+  .SearchBox{
+    backdrop-filter: blur(50px);
+    background-color: rgb(255, 255, 255);
+  }
+  
+  .recipeText{
+    font-family: "Anta", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 20px;
+  }
+  
+  .p{
+    font-family: "Anta", sans-serif;
+
+  }
+
+  .rated{
+    font-family: "Anta", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 30px;
+  }
+
+  .catogry{
+    font-family: "Anta", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 30px;
+  }
+
+  ol {
+    font-size: 20px; /* Adjust the size to your preference */
+  }

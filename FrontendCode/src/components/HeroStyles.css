@@ -1,0 +1,375 @@
+:root {
+  --clr-neutral-900: hsl(207, 19%, 9%);
+  --clr-neutral-100: hsl(0, 0%, 100%);
+  --clr-accent-400: hsl(142, 90%, 61%);
+}
+
+h6{
+  color: #ffffff00;
+}
+
+.mainhome{
+  background: linear-gradient(90deg, #f0dde2 0%, #ced3ea 100%);
+
+}
+
+.style1{
+  font-size: 25px;
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: 400;
+  font-style: normal;
+  margin-bottom: 50px;
+  margin-top: 50px;
+}
+
+.style2{
+  margin-top: 50px;
+  margin-bottom: 50px;
+  font-size: 30px;
+  font-family: Papyrus;
+  color: rgb(214, 55, 55);
+}
+
+.Card{
+  margin-left: auto;
+  /* margin-top: 80px; */
+}
+
+.home {
+  height: 760px;
+  width: 100%;
+  object-fit: cover;
+  background-size: cover;
+  padding: 8rem 0 0;
+  background-image: url(https://source.unsplash.com/random?fruits);
+  background-size: cover;
+  position: relative;
+  overflow: hidden;
+  background-repeat: no-repeat;
+  background-position: center;
+  /* box-shadow: 0 -50px 20px 10px #ffffffa5 inset; */
+}
+
+.home::before {
+  backdrop-filter: blur(10px);
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* background-image: url('../assets/pexels-ella-olsson-1640773.jpg'); */
+  background-size: cover;
+  filter: blur(5px);
+  /* box-shadow: 0 -50px 20px 10px #ffffffa5 ; */
+  z-index: -1; /* Place it behind the text */
+}
+
+.homefont1 {
+  font-size: 45px;
+  font-family: "Srisakdi", system-ui;
+  font-weight: 900;
+  color : #000000;
+}
+
+.homefont {
+  font-size: 45px;
+  font-family: "Srisakdi", system-ui;
+  font-weight: 900;
+  color : #000000;
+  margin-left: -70px;
+}
+
+.homefont11{
+  font-size: 45px;
+  font-family: "Srisakdi", system-ui;
+  font-weight: 900;
+  color : #00af32;
+  margin-left: -70px;
+}
+
+.homefont2{
+  margin-top: 30px;
+  /* margin-left: 80px; */
+  font-size: 45px;
+  font-family: "Comforter", cursive; 
+  font-weight: 900;
+  font-style: normal;
+  color : #ff8c00;
+}
+
+.SearchBox{
+  border: 3px solid black;
+  width: 480px;
+  height: 50px;
+  padding: 5px;
+  border-radius: 10px;
+}
+
+.name {
+  position: relative;
+  width: 100%;
+  /* height: 100%; */
+  margin-left: 80px;
+  /* backdrop-filter: blur(15px); */
+  justify-content: left;
+  border: none;
+
+}
+
+
+.card1{
+  height: 35ch;
+  width: 30ch;
+  object-fit: cover;
+  background-size: cover;
+  padding: 10rem 0 0;
+  border-radius: 0.5rem;
+
+
+}
+
+.card {
+  color: var(--clr-neutral-100);
+  /* background-image: url(../assets/recipe3.jpg); */
+  background-size: cover;
+  object-fit: cover;
+  padding: 10rem 0 0;
+  max-width: 30ch;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  transition: transform 100ms ease;
+  
+}
+
+.card:hover,
+.card:focus-within {
+  transform: scale(1);
+}
+
+.card-content {
+  --padding: 1.5rem;
+  padding: var(--padding);
+  background: linear-gradient(
+    hsl(0 0% 0% / 0),
+    hsl(20 0% 0% / 0.3) 20%,
+    hsl(0 0% 0% / 1)
+  );
+}
+
+.card-title {
+  position: relative;
+  width: max-content;
+}
+
+.card:hover .card-title::after,
+.card:focus-within .card-title::after {
+  transform: scaleX(1);
+}
+
+.card-title::after {
+  content: "";
+  position: absolute;
+  height: 4px;
+  width: calc(100% + var(--padding));
+  left: calc(var(--padding) * -1);
+  bottom: -2px;
+  background: var(--clr-accent-400);
+  transform-origin: left;
+  transition: transform 500ms ease;
+}
+
+@media (hover) {
+  .card-content {
+    transform: translateY(65%);
+    transition: transform 500ms ease;
+  }
+
+  .card-content > *:not(.card-title) {
+    opacity: 0;
+    transition: opacity 500ms linear;
+  }
+
+  .card:hover .card-content > *:not(.card-title),
+  .card:focus-within .card-content > *:not(.card-title) {
+    opacity: 1;
+    transition-delay: 700ms;
+  }
+
+  .card:hover .card-content,
+  .card:focus-within .card-content {
+    transform: translateY(0);
+    transition-delay: 500ms;
+  }
+
+  .card:focus-within .card-content {
+    transition-duration: 0ms;
+  }
+
+  .card-title::after {
+    transform: scaleX(0);
+  }
+}
+
+.button {
+  cursor: pointer;
+  display: inline-block;
+  text-decoration: none;
+  /* color: var(--clr-neutral-900); */
+  /* background-color: var(--clr-accent-400); */
+  padding: 0.5em 1.25em;
+  border-radius: 0.25rem;
+}
+
+
+
+.card-body {
+  color: rgb(255, 255, 255/0.85);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+    transition-delay: 0ms !important;
+  }
+}
+
+
+.swiper {
+  /* box-shadow: 0px 0px 15px 8px rgb(136, 18, 18)  ; */
+  border-radius: 20px;
+  width: 80%;
+  height: 550px;
+}
+
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+
+  /* Center slide text vertically */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.swiper-pagination-bullet {
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  line-height: 20px;
+  font-size: 12px;
+  color: #000;
+  opacity: 1;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.swiper-pagination-bullet-active {
+  color: #fff;
+  background: #007aff;
+}
+
+/* HeroStyles.css */
+
+.slide {
+  position: relative;
+  /* background: linear-gradient(90deg, #e3ffe7 0%, #d9e7ff 100%); */
+}
+
+.image-container {
+  position: relative;
+  width: 100%;
+}
+
+.image {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.image-description {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  color: #fff;
+  font-size: 16px;
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 8px;
+  border-radius: 8px;
+}
+
+.custom-class {
+  /* Your custom CSS properties for the second and fourth divs */
+  background-color: rgb(249, 249, 189);
+  margin-top: -290px;
+  /* Add more styles as needed */
+}
+
+.customs-class {
+  /* Your custom CSS properties for the second and fourth divs */
+  background-color: rgb(245, 245, 200);
+  margin-top: 290px;
+  /* Add more styles as needed */
+}
+
+.Card{
+  margin-bottom: -80px;
+  margin-top: -50px;
+}
+
+.lines h5{
+  font-family: "Ruthie", cursive;
+  font-weight: 400;
+  font-size: 50px;
+  font-style: normal;
+  margin-bottom: -20px;
+  margin-top: 20px;
+}
+
+@keyframes moveRightToLeft {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes moveLeftToRight {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.slider {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  white-space: nowrap;
+  width: auto;
+}
+
+.move-right-to-left {
+  animation: moveRightToLeft 10s linear infinite;
+}
+
+.move-left-to-right {
+  animation: moveLeftToRight 10s linear infinite;
+}

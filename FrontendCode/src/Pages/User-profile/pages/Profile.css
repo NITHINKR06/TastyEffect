@@ -1,0 +1,32 @@
+.profile{
+    /* box-shadow: 1px 1px 7px 1px black; */
+    border-radius: 5px;
+    background: linear-gradient(120deg, #c8face 0%, #b8d0f9 100%);
+
+}
+
+.Ptext{
+    font-family: "Anta", sans-serif;
+    font-size: 33px;
+    font-weight: 800;
+}
+
+.text{
+    font-family: "Anta", sans-serif;
+    font-size: 25px;
+    font-weight: 500;
+}
+
+/* Container styles */
+.profileset{
+    height: 100vh;
+}
+
+.profilePage{
+    background: linear-gradient(120deg, #c8face 0%, #b8d0f9 100%);
+}
+
+.profileSetting{
+    background: linear-gradient(120deg, #c8face 0%, #b8d0f9 100%);
+
+}
