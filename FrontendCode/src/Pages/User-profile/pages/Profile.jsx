@@ -13,6 +13,7 @@ import { Link } from 'react-router-dom';
 import axios from "axios";
 import MyRecipePage from '../../Recipes/Pages/Search';
 import './Profile.css'
+import API_URL from "../../../config";
 
 export default function Profile() {
     const [user, setUser] = useState(null);
@@ -27,7 +28,7 @@ export default function Profile() {
             const userId = decodedToken.id;
             console.log(decodedToken)
 
-            axios.get(`http://localhost:7000/api/user/viewSingleUser/${userId}`)
+            axios.get(`${API_URL}/api/user/viewSingleUser/${userId}`)
             .then((response) => {
                 setUser(response.data.user);
             })
@@ -91,7 +92,7 @@ export default function Profile() {
                                 <div className='profile' style={{justifyContent:'center', alignItems:'center', display:'flex',  backgroundColor: '#FFDEE9',
                                 // backgroundImage: 'linear-gradient(0deg, #FFDEE9 0%, #B5FFFC 100%)',
                                 height:'100vh', gap:'20px'}} >
-                                    <img src={`http://localhost:7000/uploads/user/${user.profile}`} alt="hii" style={{height:'200px', width:'200px'}}/>
+                                    <img src={`${API_URL}/uploads/user/${user.profile}`} alt="hii" style={{height:'200px', width:'200px'}}/>
                                     <div className='Ptext'>Welcome,
                                         <p className='text'>{user.name}</p> 
                                         <p className='text'>Email: {user.email}</p>

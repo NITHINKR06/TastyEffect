@@ -15,6 +15,8 @@ import {
 } from "@mui/material";
 import { ToastContainer, toast } from "react-toastify";
 
+import API_URL from "../../../config";
+
 
 const EditRecipe = ({ selectedRecipe, setSelectedRecipe }) => {
 
@@ -57,7 +59,7 @@ const EditRecipe = ({ selectedRecipe, setSelectedRecipe }) => {
 
   console.log(data, 'Going to update info');
 
-  axios.put(`http://localhost:7000/api/recipe/updateRecipe/${selectedRecipe._id}`, data)
+  axios.put(`${API_URL}/api/recipe/updateRecipe/${selectedRecipe._id}`, data)
     .then(async (response) => {
       console.log(response, 'updated data');
       console.log(response.data)
@@ -158,7 +160,7 @@ const EditRecipe = ({ selectedRecipe, setSelectedRecipe }) => {
           <Box sx={{ mt: 3, justifyContent: "center", alignItems: "center", mb:-10 }}>
             <Grid container spacing={1}>
               <Grid item xs={12} sx={{ display: "grid", justifyContent: "center", marginLeft: "-90px" }}>
-                <img src={`http://localhost:7000/uploads/recipe/${selectedRecipe?.profile}`} alt="Recipe Photo" style={{height:'250px'}}/>
+                <img src={`${API_URL}/uploads/recipe/${selectedRecipe?.profile}`} alt="Recipe Photo" style={{height:'250px'}}/>
                 <h1 style={{ fontFamily: "Anta, sans-serif", fontSize: "22px" }}>Rating for the Recipe you added</h1>
                 &nbsp;&nbsp;
                 <Rating

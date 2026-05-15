@@ -30,6 +30,7 @@ import images6 from '../assets/images/pexels-valeria-boltneva-1833349.jpg';
 
 import './HeroStyles.css';
 import axios from 'axios';
+import API_URL from "../config";
 import ArrowCircleDownIcon from '@mui/icons-material/ArrowCircleDown';
 import proImage from '../assets/hero/Screenshot 2024-03-23 100746.png'
 import pose1 from '../assets/hero/vecteezy_ai-generated-color-full-veggie-wrap-isolated-on-png-background_39113486.png'
@@ -140,7 +141,7 @@ export default function Hero({ bgColor }) {
   const [recipes, setRecipes] = useState([]);
   useEffect(() => {
     axios
-      .get("http://localhost:7000/api/recipe/getAllRecipes")
+      .get(`${API_URL}/api/recipe/getAllRecipes`)
       .then((response) => {
         // console.log("Received recipes data:", response.data.recipes);
         // Shuffle the recipes array
@@ -276,7 +277,7 @@ export default function Hero({ bgColor }) {
 
       <div className="Card" style={{ display: 'flex', gap: '10px', justifyContent:'center', alignItems:'center' }}>
       {recipes.map((recipe, index) => (
-        <div key={index} className={`card ${index === 1 || index === 3 ? 'custom-class' : ''}`} style={{ backgroundImage: `url(http://localhost:7000/uploads/recipe/${recipe.profile})`, display:'grid',marginBottom:'50px' }}>
+        <div key={index} className={`card ${index === 1 || index === 3 ? 'custom-class' : ''}`} style={{ backgroundImage: `url(${API_URL}/uploads/recipe/${recipe.profile})`, display:'grid',marginBottom:'50px' }}>
           <div className="card-content">
             <h2 className="card-title">{recipe.recipeName}</h2>
             <Divider sx={{ my: 2 }} />

@@ -14,6 +14,7 @@ import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useState } from "react";
 import axios from "axios";
+import API_URL from "../../../config";
 
 const defaultTheme = createTheme();
 
@@ -38,7 +39,7 @@ export default function AdminSignUp() {
     // console.log(userProfile);
     // console.log(formData);
     axios
-      .post("http://localhost:7000/api/admin/register", formData)
+      .post(`${API_URL}/api/admin/register`, formData)
       .then(async (response) => {
         console.log(response.data);
         if (response.data.success) {

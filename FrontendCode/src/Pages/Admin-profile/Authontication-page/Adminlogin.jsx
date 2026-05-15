@@ -16,6 +16,7 @@ import { useState } from "react";
 import axios from "axios";
 import HomeIcon from "@mui/icons-material/Home";
 import { ToastContainer, toast } from "react-toastify";
+import API_URL from "../../../config";
 
 
 import './loginstyle.css'
@@ -38,7 +39,7 @@ export default function AdminLoginPage() {
     }
 
     axios
-      .post("http://localhost:7000/api/admin/login", adminInfo)
+      .post(`${API_URL}/api/admin/login`, adminInfo)
       .then(async (response) => {
         console.log(response.data);
         if (response.data.success) {
@@ -230,7 +231,7 @@ export default function AdminLoginPage() {
     }
 
     axios
-      .post("http://localhost:7000/api/admin/login", { ...adminInfo, captchaValue })
+      .post(`${API_URL}/api/admin/login`, { ...adminInfo, captchaValue })
       .then(async (response) => {
         console.log(response.data);
         if (response.data.success) {
@@ -307,7 +308,7 @@ export default function AdminLoginPage() {
               />
 
               <ReCAPTCHA
-                sitekey="YOUR_RECAPTCHA_SITE_KEY"
+                sitekey={process.env.REACT_APP_RECAPTCHA_SITE_KEY}
                 onChange={handleCaptchaChange}
               />
 

@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from "styled-components";
 import backgroundImage2 from '../pexels-marek-piwnicki-11513011.jpg'; // Adjust the path to your image
+import API_URL from "../../../config";
 
 export default function FedbackFromUser() {
 
@@ -28,7 +29,7 @@ export default function FedbackFromUser() {
     useEffect(() => {
         const fetchSubscriptions = async () => {
             try {
-                const response = await fetch('http://localhost:7000/api/feedback/all');
+                const response = await fetch(`${API_URL}/api/feedback/all`);
                 const data = await response.json();
                 setSubscriptions(data);
             } catch (error) {
@@ -42,7 +43,7 @@ export default function FedbackFromUser() {
     const handleDelete = async (id) => {
         console.log(id)
         try {
-            await fetch(`http://localhost:7000/api/feedback/delete/${subscriptions?.id}`, {
+            await fetch(`${API_URL}/api/feedback/delete/${id}`, {
                 method: 'DELETE'
             });
             setSubscriptions(subscriptions.filter(subscription => subscription.id !== id));

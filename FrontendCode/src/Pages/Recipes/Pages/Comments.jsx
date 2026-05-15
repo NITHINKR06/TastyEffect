@@ -1,110 +1,137 @@
-// NestedComments.js
-
 import React, { useState, useEffect } from 'react';
+import API_URL from '../../../config';
 
-function Comment({ comment, onReply , selectedRecipeForComments}) {
-  const [replyText, setReplyText] = useState('');
-console.log(selectedRecipeForComments)
-  const handleReply = () => {
-    onReply(replyText);
-    setReplyText('');
+function Comments({ selectedRecipeForComments }) {
+  const [comments, setComments] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [submitting, setSubmitting] = useState(false);
+  const [form, setForm] = useState({
+    fullName: '',
+    email: '',
+    rating: '5',
+    comments: '',
+  });
+
+  // The recipeId comes from the selected recipe object passed by ViewAllRecipes
+  const recipeId = selectedRecipeForComments?._id;
+
+  useEffect(() => {
+    if (recipeId) {
+      fetchComments();
+    }
+  }, [recipeId]);
+
+  const fetchComments = async () => {
+    setLoading(true);
+    try {
+      const response = await fetch(`${API_URL}/api/recipeComments/getcomments/${recipeId}`);
+      const data = await response.json();
+      setComments(Array.isArray(data) ? data : []);
+    } catch (error) {
+      console.error('Error fetching comments:', error);
+      setComments([]);
+    } finally {
+      setLoading(false);
+    }
   };
 
-  if (!comment || !comment.text) {
-    return null;
-  }
+  const handleChange = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!recipeId) return;
+
+    setSubmitting(true);
+    try {
+      const response = await fetch(`${API_URL}/api/recipeComments/addcomments/${recipeId}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+      });
+      const data = await response.json();
+      if (response.ok) {
+        setComments((prev) => [...prev, data]);
+        setForm({ fullName: '', email: '', rating: '5', comments: '' });
+      }
+    } catch (error) {
+      console.error('Error adding comment:', error);
+    } finally {
+      setSubmitting(false);
+    }
+  };
 
   return (
-    <div style={{ marginLeft: '20px', marginBottom: '10px' }}>
-      <p>{comment.text}</p>
-      <input
-        type="text"
-        value={replyText}
-        onChange={(e) => setReplyText(e.target.value)}
-        placeholder="Write your reply..."
-      />
-      <button onClick={handleReply}>Reply</button>
-      {comment.replies && comment.replies.length > 0 && (
-        <ul>
-          {comment.replies.map((reply, index) => (
-            <li key={index}>{reply.text}</li>
+    <div style={{ padding: '16px' }}>
+      <h3>Comments</h3>
+
+      {/* Existing comments */}
+      {loading ? (
+        <p>Loading comments…</p>
+      ) : comments.length === 0 ? (
+        <p>No comments yet. Be the first!</p>
+      ) : (
+        <ul style={{ listStyle: 'none', padding: 0 }}>
+          {comments.map((c, i) => (
+            <li key={c._id || i} style={{ borderBottom: '1px solid #eee', marginBottom: '12px', paddingBottom: '12px' }}>
+              <strong>{c.fullName}</strong> &nbsp;
+              <span style={{ color: '#f59e0b' }}>{'★'.repeat(Number(c.rating))}</span>
+              <p style={{ margin: '4px 0 0' }}>{c.comments}</p>
+            </li>
           ))}
         </ul>
       )}
+
+      {/* Add comment form */}
+      <h4 style={{ marginTop: '24px' }}>Leave a comment</h4>
+      <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '10px', maxWidth: '400px' }}>
+        <input
+          name="fullName"
+          placeholder="Your name"
+          value={form.fullName}
+          onChange={handleChange}
+          required
+          style={{ padding: '8px', borderRadius: '4px', border: '1px solid #ccc' }}
+        />
+        <input
+          name="email"
+          type="email"
+          placeholder="Your email"
+          value={form.email}
+          onChange={handleChange}
+          required
+          style={{ padding: '8px', borderRadius: '4px', border: '1px solid #ccc' }}
+        />
+        <select
+          name="rating"
+          value={form.rating}
+          onChange={handleChange}
+          style={{ padding: '8px', borderRadius: '4px', border: '1px solid #ccc' }}
+        >
+          {[5, 4, 3, 2, 1].map((n) => (
+            <option key={n} value={n}>{n} Star{n > 1 ? 's' : ''}</option>
+          ))}
+        </select>
+        <textarea
+          name="comments"
+          placeholder="Write your comment…"
+          value={form.comments}
+          onChange={handleChange}
+          required
+          rows={3}
+          style={{ padding: '8px', borderRadius: '4px', border: '1px solid #ccc', resize: 'vertical' }}
+        />
+        <button
+          type="submit"
+          disabled={submitting}
+          style={{ padding: '10px', backgroundColor: '#ef4444', color: '#fff', border: 'none', borderRadius: '4px', cursor: 'pointer' }}
+        >
+          {submitting ? 'Posting…' : 'Post Comment'}
+        </button>
+      </form>
     </div>
   );
 }
 
-function NestedComments() {
-  const [comments, setComments] = useState([]); // Ensure comments is initialized as an array
-
-  useEffect(() => {
-    fetchComments();
-  }, []);
-
-  const fetchComments = async () => {
-    try {
-      const response = await fetch('http://localhost:7000/api/recipeComments/getcomments/:recipeId');
-      const data = await response.json();
-      console.log(data, 'hiiiiiiiiiiiiiiiiii'); // Inspect data fetched from server
-      setComments(data); // Ensure data fetched is an array
-    } catch (error) {
-      console.error('Error fetching comments:', error);
-    }
-  };
-
-  const addComment = async (newCommentText) => {
-    try {
-      const response = await fetch('http://localhost:7000/api/recipeComments/addcomments/', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ text: newCommentText }),
-      });
-      const data = await response.json();
-      setComments([...comments, data]);
-      console.log(data)
-    } catch (error) {
-      console.error('Error adding comment:', error);
-    }
-  };
-
-  const handleAddComment = () => {
-    const newCommentText = prompt('Write your comment:');
-    if (newCommentText.trim() !== '') {
-      addComment(newCommentText);
-    }
-  };
-
-  const replyToComment = async (index, replyText) => {
-    if (replyText.trim() !== '') {
-      try {
-        const newComments = [...comments];
-        newComments[index].replies.push({ text: replyText });
-        setComments(newComments);
-        await fetch('/api/comments', {
-          method: 'PUT',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(newComments[index]),
-        });
-      } catch (error) {
-        console.error('Error replying to comment:', error);
-      }
-    }
-  };
-
-  return (
-    <div>
-      <h2>Comments</h2>
-      {comments?.map((comment, index) => (
-        <Comment key={index} comment={comment} onReply={(replyText) => replyToComment(index, replyText)} />
-      ))}
-      <button onClick={handleAddComment}>Add Comment</button>
-    </div>
-  );
-}
-
-export default NestedComments;
+export default Comments;

@@ -7,6 +7,7 @@ import { styled } from '@mui/material/styles';
 import TableCell, { tableCellClasses } from '@mui/material/TableCell';
 import SingleView from "./SingleView";
 import { Link } from "react-router-dom";
+import API_URL from "../../../config";
 
 // import './team.css'
 
@@ -52,7 +53,7 @@ const Allrecipe = () => {
 // Inside your useEffect hook in Allrecipe component
 useEffect(() => {
   axios
-  .get("http://localhost:7000/api/recipe/getAllRecipes")
+  .get(`${API_URL}/api/recipe/getAllRecipes`)
   .then((response) => {
     // Ensure the response contains 'recipes' array
     setStudents(response.data.recipes || []);
@@ -90,7 +91,7 @@ useEffect(() => {
   // console.log(students, 'recipe id')
 
   const handleDeleteUser = (recipeId) => {
-    axios.delete(`http://localhost:7000/api/recipe/deleterecipe/${recipeId}`)
+    axios.delete(`${API_URL}/api/recipe/deleterecipe/${recipeId}`)
       .then((response) => {
         setOpenViewSingledelete(false); // Close delete confirmation modal
       })
@@ -133,7 +134,7 @@ useEffect(() => {
                   </StyledTableCell>
                   <StyledTableCell align="left">
                     <img
-                      src={`http://localhost:7000/uploads/recipe/${row.profile}`}
+                      src={`${API_URL}/uploads/recipe/${row.profile}`}
                       alt="Profile"
                       style={{ width: "70px", height: "70px" }}
                     />

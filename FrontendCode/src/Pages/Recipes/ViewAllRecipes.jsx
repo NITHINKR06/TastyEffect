@@ -12,6 +12,7 @@ import CommentIcon from '@mui/icons-material/Comment';
 import Comments from "./Pages/Comments";
 import './viewallrecipe.css'
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import API_URL from "../../config";
 
 const styles = {
   position: "absolute",
@@ -77,7 +78,7 @@ const ViewAllRecipes = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:7000/api/recipe/getAllRecipes")
+      .get(`${API_URL}/api/recipe/getAllRecipes`)
       .then((response) => {
         setRecipes(response.data.recipes);
         // console.log(response.data.recipes)
@@ -205,7 +206,7 @@ const ViewAllRecipes = () => {
                 <RecipeCard key={recipe._id} style={{ justifyContent: "center", alignItems: "center" }}>
                   <RecipeCardContent>
                     <div>
-                      <img src={`http://localhost:7000/uploads/recipe/${recipe.profile}`} alt="Profile" style={{ width: "100px", height: "100px" }} />
+                      <img src={`${API_URL}/uploads/recipe/${recipe.profile}`} alt="Profile" style={{ width: "100px", height: "100px" }} />
                       <p>
                         <Rating name="recipe-rating" value={recipe.recipeRating} readOnly />
                         <h1 className="avg"> AVERAGE {recipe.recipeRating} / COMMENTS</h1>
@@ -253,7 +254,7 @@ const ViewAllRecipes = () => {
         <RecipeCard key={recipe._id} style={{ justifyContent: "center", alignItems: "center" }}>
           <RecipeCardContent>
             <div>
-              <img src={`http://localhost:7000/uploads/recipe/${recipe.profile}`} alt="Profile" style={{ width: "200px", height: "200px" }} />
+              <img src={`${API_URL}/uploads/recipe/${recipe.profile}`} alt="Profile" style={{ width: "200px", height: "200px" }} />
               <p style={{ margin: '10px' , textAlign:'left'}}>
                 <h1 className="reName" style={{ fontFamily: 'Anta, sans-serif', fontSize: '20px' }}>{recipe.recipeName}</h1>
               </p>

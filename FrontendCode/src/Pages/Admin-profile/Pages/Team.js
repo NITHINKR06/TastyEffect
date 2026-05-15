@@ -6,6 +6,7 @@ import { styled } from '@mui/material/styles';
 import TableCell, { tableCellClasses } from '@mui/material/TableCell';
 import './team.css'
 import { Link } from "react-router-dom";
+import API_URL from "../../../config";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -49,7 +50,7 @@ const Team = () => {
   useEffect(() => {
     let token = JSON.parse(localStorage.getItem("token"));
     axios
-      .get("http://localhost:7000/api/user/getAllUsers")
+      .get(`${API_URL}/api/user/getAllUsers`)
       .then((response) => {
         setStudents(response.data.users);
       })
@@ -76,7 +77,7 @@ const Team = () => {
 
   const handleUpdateUser = () => {
     // Make request to update user info
-    axios.put(`http://localhost:7000/api/user/updateUser/${updateUserInfo._id}`, updateUserInfo)
+    axios.put(`${API_URL}/api/user/updateUser/${updateUserInfo._id}`, updateUserInfo)
       .then(response => {
         console.log("User info updated successfully:", response.data);
         // Update the state or perform any necessary actions upon successful update
@@ -110,7 +111,7 @@ const Team = () => {
     // Send userToDeleteId to backend
     // Upon successful response, update students state or fetch data again
     // Remember to handle errors as well
-    axios.delete(`http://localhost:7000/api/user/deleteUser/${userToDeleteId}`)
+    axios.delete(`${API_URL}/api/user/deleteUser/${userToDeleteId}`)
       .then((response) => {
         console.log(response.data);
         // If deletion is successful, update the state to reflect the changes
@@ -155,7 +156,7 @@ const Team = () => {
                   </StyledTableCell>
                   <StyledTableCell align="left">
                     <img
-                      src={`http://localhost:7000/uploads/user/${row.profile}`}
+                      src={`${API_URL}/uploads/user/${row.profile}`}
                       alt="user Profile"
                       style={{ width: "70px", height: "70px" }}
                     />

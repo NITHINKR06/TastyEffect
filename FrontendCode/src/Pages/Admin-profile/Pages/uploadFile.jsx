@@ -20,6 +20,7 @@ import { Rating } from "@mui/material";
 
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import API_URL from "../../../config";
 
 const defaultTheme = createTheme();
 
@@ -63,7 +64,7 @@ export default function UploadFile() {
     });
   
     axios
-      .post("http://localhost:7000/api/recipe/insertRecipe", data)
+      .post(`${API_URL}/api/recipe/insertRecipe`, data)
       .then(async (response) => {
         toast.success("Recipe Added to the list successfully .");
         console.log("Response from server:", response);

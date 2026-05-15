@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import YouTube from 'react-youtube';
 import '../../Recipes/loaded.css';
 import { Button, Rating } from '@mui/material';
+import API_URL from "../../../config";
 
 export default function SingleView({ selectedStudent }) {
   
@@ -58,7 +59,7 @@ export default function SingleView({ selectedStudent }) {
       <p className='rDis'>Description: {selectedStudent.recipeDiscription}</p>
       <div style={{ display: 'flex', gap: '' }}>
         <div style={{marginRight:'-50px', paddingRight: ''}}>
-          <img className='img' src={`http://localhost:7000/uploads/recipe/${selectedStudent.profile}`} alt="Recipe" style={{ height: '400px', width: '400px', marginRight: '15px', marginBottom: '15px', marginLeft:'170px' }} />
+          <img className='img' src={`${API_URL}/uploads/recipe/${selectedStudent.profile}`} alt="Recipe" style={{ height: '400px', width: '400px', marginRight: '15px', marginBottom: '15px', marginLeft:'170px' }} />
           <h2 className='rIngrident'>Ingredients:</h2>
           <ul className='rIngridents'>
             {selectedStudent.recipeIngredient.map((ingredient, index) => (

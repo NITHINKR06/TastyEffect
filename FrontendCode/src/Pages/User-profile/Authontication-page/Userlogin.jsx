@@ -16,6 +16,7 @@ import { useState } from "react";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import HomeIcon from "@mui/icons-material/Home";
+import API_URL from "../../../config";
 
 import './loginstyle.css'
 
@@ -36,7 +37,7 @@ export default function UserLoginPage() {
     }
 
     axios
-      .post("http://localhost:7000/api/user/login", userInfo)
+      .post(`${API_URL}/api/user/login`, userInfo)
       .then(async (response) => {
                 
         if (response.data.success) {

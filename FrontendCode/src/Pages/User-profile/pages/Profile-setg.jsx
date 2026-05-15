@@ -14,6 +14,7 @@ import axios from "axios";
 import './ProfileStg.css';
 
 import HomeIcon from "@mui/icons-material/Home";
+import API_URL from "../../../config";
 
 export default function Profilesettg() {
 
@@ -32,7 +33,7 @@ export default function Profilesettg() {
       const decodedToken = JSON.parse(atob(token.split('.')[1]));
       const userId = decodedToken.id;
 
-      axios.get(`http://localhost:7000/api/user/viewSingleUser/${userId}`)
+      axios.get(`${API_URL}/api/user/viewSingleUser/${userId}`)
         .then((response) => {
           setUser(response.data.user);
           // console.log(response.data.user.name);
@@ -88,7 +89,7 @@ export default function Profilesettg() {
     formDataToUpdate.append('profile', formData.profile);
     console.log(formData?._id)
 
-    axios.put(`http://localhost:7000/api/user/updateUser/${userId}`, formDataToUpdate, config)
+    axios.put(`${API_URL}/api/user/updateUser/${userId}`, formDataToUpdate, config)
       .then((response) => {
         setUser(response.data.data);
         // console.log('hii', response.data.data);

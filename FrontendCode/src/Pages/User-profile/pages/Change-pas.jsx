@@ -13,6 +13,7 @@ import axios from 'axios';
 import './ProfilePC.css'
 import { ToastContainer, toast } from "react-toastify";
 import { Link } from 'react-router-dom';
+import API_URL from "../../../config";
 
 
 export default function Changepas() {
@@ -42,7 +43,7 @@ const handleChangePassword = async () => {
     const adminData = JSON.parse(localStorage.getItem('admin'));
     const userId = adminData._id;
 
-    const response = await axios.put(`http://localhost:7000/api/user/password/${userId}`, {
+    const response = await axios.put(`${API_URL}/api/user/password/${userId}`, {
       currentPassword,
       newPassword,
     });

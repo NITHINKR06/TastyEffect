@@ -11,6 +11,7 @@ import { styled } from "@mui/material/styles";
 
 import LoadedRecipe from '../loadedrecipe';
 import './style.css'
+import API_URL from "../../../config";
 
 const styles = {
   position: "absolute",
@@ -63,7 +64,7 @@ const SearchRecipes = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:7000/api/recipe/getAllRecipes")
+      .get(`${API_URL}/api/recipe/getAllRecipes`)
       .then((response) => {
         setRecipes(response.data.recipes); // Assuming recipes are returned as 'recipes' not 'users'
         console.log(response.data.recipes, "hiiiii");
@@ -131,7 +132,7 @@ const SearchRecipes = () => {
                 <CardContent key={recipe._id} style={{ justifyContent: "center", alignItems: "center" }}>
                   <Card>
                     <div>
-                      <img src={`http://localhost:7000/uploads/recipe/${recipe.profile}`} alt="Profile" style={{ width: "150px", height: "150px" }} />
+                      <img src={`${API_URL}/uploads/recipe/${recipe.profile}`} alt="Profile" style={{ width: "150px", height: "150px" }} />
                       <p>
                         <Rating name="recipe-rating" value={recipe.recipeRating} readOnly />
                         <h1 className="avg"> AVERAGE {recipe.recipeRating} / COMMENTS</h1>

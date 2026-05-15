@@ -5,6 +5,7 @@ import { Link, Navigate, useNavigate } from "react-router-dom";
 import img from '../assets/pngwing.com (8).png';
 import SendIcon from '@mui/icons-material/Send';
 import { ToastContainer, toast } from "react-toastify";
+import API_URL from "../config";
 function AboutUs() {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
@@ -25,7 +26,7 @@ function AboutUs() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('http://localhost:7000/api/feedback/submit', {
+      const response = await fetch(`${API_URL}/api/feedback/submit`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

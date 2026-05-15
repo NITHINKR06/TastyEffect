@@ -3,6 +3,7 @@ import EditRecipe from './EditFile'
 import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
 import { Button } from '@mui/material';
+import API_URL from "../../../config";
 
 export default function Updaterecipe() {
 
@@ -13,7 +14,7 @@ export default function Updaterecipe() {
   const [selectedRecipe, setSelectedRecipe] = useState(null);
   useEffect(() => {
     axios
-      .get("http://localhost:7000/api/recipe/getRecipeId/" + recipeId)
+      .get(`${API_URL}/api/recipe/getRecipeId/${recipeId}`)
       .then((response) => {
       //  console.log(response.data.recipe)
         setSelectedRecipe(response.data.recipe);

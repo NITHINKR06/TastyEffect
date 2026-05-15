@@ -12,6 +12,7 @@ import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import { Link } from 'react-router-dom';
 import './Savedrecipe.css'
+import API_URL from "../../../config";
 const style = {
   position: "absolute",
   top: "50%",
@@ -109,7 +110,7 @@ export default function Saveditems() {
               <RecipeCard key={item._id} style={{ justifyContent: "center", alignItems: "center" }}>
                 <RecipeCardContent >
                   <div>
-                    <img src={`http://localhost:7000/uploads/recipe/${item.profile}`} alt="Profile" style={{ width: "200px", height: "200px" }} />
+                    <img src={`${API_URL}/uploads/recipe/${item.profile}`} alt="Profile" style={{ width: "200px", height: "200px" }} />
                     <p style={{margin:'15px'}}>
                       <h1 className="reName" style={{fontFamily:'Anta, sans-serif', fontSize:'23px'}}>{item.recipeName}</h1>
                     </p>

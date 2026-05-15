@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './loaded.css';
 import YouTube from 'react-youtube';
 import { Rating } from '@mui/material';
+import API_URL from "../../config";
 
 export default function LoadedRecipe({ selectedRecipe }) {
 
@@ -55,7 +56,7 @@ export default function LoadedRecipe({ selectedRecipe }) {
       <p className='rDis'>Description: {selectedRecipe.recipeDiscription}</p>
       <div style={{ display: 'flex', gap: '' }}>
         <div style={{marginRight:'-50px', paddingRight: ''}}>
-          <img className='img' src={`http://localhost:7000/uploads/recipe/${selectedRecipe.profile}`} alt="Recipe" style={{ height: '380px', width: '380px', marginRight: '15px', marginBottom: '15px', marginLeft:'170px' }} />
+          <img className='img' src={`${API_URL}/uploads/recipe/${selectedRecipe.profile}`} alt="Recipe" style={{ height: '380px', width: '380px', marginRight: '15px', marginBottom: '15px', marginLeft:'170px' }} />
           <h2 className='rIngrident'>Ingredients:</h2>
           <ul className='rIngridents'>
             {selectedRecipe.recipeIngredient.map((ingredient, index) => (

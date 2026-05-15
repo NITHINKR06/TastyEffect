@@ -15,6 +15,7 @@ import Footer from '../../components/FootersWeb';
 
 import SearchRecipes from '../Recipes/SearchRecipe/SearchRecipes'
 import axios from 'axios';
+import API_URL from "../../config";
 
 
 export default function MainPage() {
@@ -94,7 +95,7 @@ export default function MainPage() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:7000/api/recipe/getAllRecipes")
+      .get(`${API_URL}/api/recipe/getAllRecipes`)
       .then((response) => {
         const sortedRecipes = response.data.users.sort((a, b) => b.rating - a.rating);
         setRecipes(sortedRecipes.slice(0, 9)); // Display only the top 9 recipes by rating
@@ -196,7 +197,7 @@ export default function MainPage() {
           <Box sx={containerStyle}>
           {recipes.map((item, index) => (
             <Box key={index} sx={boxStyle}>
-              <img src={`http://localhost:7000/uploads/recipe/${item.profile}`} alt="Recipe" style={imageStyle} />
+              <img src={`${API_URL}/uploads/recipe/${item.profile}`} alt="Recipe" style={imageStyle} />
               <div style={{ justifyContent: 'center', alignItems: 'center', textAlign: 'left', marginLeft: '10px', width: '250px', height: '80px' }}>
                 <h3 className='recipeText'>{item.recipeName}</h3>
                 <p>

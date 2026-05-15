@@ -22,6 +22,7 @@ import './FooterStyles.css'
 import axios from 'axios';
 import {toast} from 'react-toastify'
 import { Link, Navigate, useNavigate } from 'react-router-dom';
+import API_URL from "../config";
 
 const logoStyle = {
   width: '240px',
@@ -41,7 +42,7 @@ export default function Footer() {
       toast.warning("Please fill out field");
       return; 
     }
-    axios.post("http://localhost:7000/api/userresponse/addresponse", { email: email })
+    axios.post(`${API_URL}/api/userresponse/addresponse`, { email: email })
       .then(async (response) => {
         
         // console.log(response, 'added to database');

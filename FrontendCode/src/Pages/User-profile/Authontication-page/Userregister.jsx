@@ -26,6 +26,7 @@ import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import OutlinedInput from '@mui/material/OutlinedInput';
 import HomeIcon from "@mui/icons-material/Home";
 import { ToastContainer, toast } from "react-toastify";
+import API_URL from "../../../config";
 
 
 const defaultTheme = createTheme();
@@ -72,7 +73,7 @@ export default function UserSignUp() {
     // console.log(userProfile);
     // console.log(formData);
     axios
-      .post("http://localhost:7000/api/user/insertUser", formData)
+      .post(`${API_URL}/api/user/insertUser`, formData)
       .then(async (response) => {
         console.log(response.data);
         if (response.data.success) {
