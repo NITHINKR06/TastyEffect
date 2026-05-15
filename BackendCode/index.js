@@ -2,6 +2,8 @@ const express = require("express");
 const ConnectToMongo = require("./db");
 const cors = require("cors");
 const nodemailer = require('nodemailer');
+const fs = require("fs");
+const path = require("path");
 require('dotenv').config();
 
 ConnectToMongo();
@@ -33,6 +35,17 @@ app.use("/api/userresponse", require("./Routes/Varificatiion_router"));
 
 app.use("/api/recipeComments", require("./Routes/reviews_router"));
 app.use("/api/feedback", require("./Routes/Feedback_router"));
+
+const frontendBuildPath = path.join(__dirname, "..", "FrontendCode", "build");
+
+if (fs.existsSync(frontendBuildPath)) {
+  app.use(express.static(frontendBuildPath));
+
+  // Serve React app for all non-API/non-upload routes.
+  app.get(/^\/(?!api|uploads).*/, (req, res) => {
+    res.sendFile(path.join(frontendBuildPath, "index.html"));
+  });
+}
 
 const PORT = process.env.PORT || 7000;
 app.listen(PORT, () => {
